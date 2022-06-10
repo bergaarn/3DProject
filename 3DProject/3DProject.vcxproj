@@ -139,7 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Application\Window.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="External\WhatToDo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Application\Window.h" />
+    <ClInclude Include="Engine\Engine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
