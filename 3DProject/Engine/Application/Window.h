@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <Windows.h>
 
@@ -16,7 +17,7 @@ public:
 	Window();
 	~Window();
 
-	bool init(unsigned int w, unsigned int h, const std::string t);
+	bool init(unsigned int width, unsigned int height, const std::string title);
 	const bool& isRunning();
 	void setTitle(const std::string& title);
 	void quit();

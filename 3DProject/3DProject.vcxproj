@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Application\Scene.cpp" />
+    <ClCompile Include="Engine\Application\SceneHandler.cpp" />
     <ClCompile Include="Engine\Application\Window.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +149,8 @@
     <Text Include="External\WhatToDo.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Application\Scene.h" />
+    <ClInclude Include="Engine\Application\SceneHandler.h" />
     <ClInclude Include="Engine\Application\Window.h" />
     <ClInclude Include="Engine\Engine.h" />
   </ItemGroup>

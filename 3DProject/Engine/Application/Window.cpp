@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <iostream>
 
 LRESULT CALLBACK windowProc(HWND handler, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -21,7 +22,7 @@ LRESULT CALLBACK windowProc(HWND handler, UINT message, WPARAM wParam, LPARAM lP
 
 
 Window::Window()
-	:width(0), height(0), title(""), windowHandler(NULL), windowClass{}, running(false)
+	: width(0), height(0), title(""), windowHandler(NULL), windowClass{}, running(false)
 {
 }
 
@@ -38,7 +39,7 @@ bool Window::init(unsigned int width, unsigned int height, const std::string tit
 	this->height = height;
 	this->title = title;
 
-	const char CLASS_NAME[] = "WindowClass";
+	const wchar_t CLASS_NAME[] = L"WindowClass";
 
 	ZeroMemory(&this->windowClass, sizeof(WNDCLASS));
 	this->windowClass.lpfnWndProc = &windowProc;
@@ -46,13 +47,50 @@ bool Window::init(unsigned int width, unsigned int height, const std::string tit
 	this->windowClass.hInstance = NULL;
 	this->windowClass.lpszClassName = CLASS_NAME;
 
+	if (!RegisterClass(&this->windowClass))
+	{
+		// Failed to register class
+		std::cerr << "windowClass failed to register, last error: " << GetLastError() << std::endl;
+		return false;
+	}
 
+	// Create Window
+	this->windowHandler = CreateWindowEx(0, CLASS_NAME, L"3D Project | Joel Berg | 2022", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
+		0, this->width, this->height, nullptr, nullptr, NULL, nullptr);
+
+	if (this->windowHandler == nullptr)
+	{
+		// Failed to create window
+		std::cerr << "windowHandler was nullptr, last error: " << GetLastError() << std::endl;
+		return false;
+	}
+
+	ShowWindow(this->windowHandler, SW_SHOW);
+	SetForegroundWindow(this->windowHandler);
+	SetFocus(this->windowHandler);
+	UpdateWindow(this->windowHandler);
+
+	this->running = true;
 
 	return true;
 }
 
 const bool& Window::isRunning()
 {
+	MSG msg;
+	ZeroMemory(&msg, sizeof(MSG));
+
+	// Handle messages
+	while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) > 0)
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+
+		// Receive quit message
+		if (msg.message == WM_QUIT)
+			this->running = false;
+	}
+
 	return this->running;
 }
 

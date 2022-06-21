@@ -1,16 +1,17 @@
 #pragma once
+#include <chrono>
+#include "Application/Window.h"
+#include "Application/SceneHandler.h"
 
 class Engine
 {
 private:
-
-	// Window
+	Window window;
+	SceneHandler sceneHandler;
 	// Renderer
 	// Resources
-	// Scenes
 
 public:
-
 	Engine();
 	~Engine();
 
