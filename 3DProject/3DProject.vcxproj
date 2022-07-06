@@ -143,6 +143,7 @@
     <ClCompile Include="Engine\Application\SceneHandler.cpp" />
     <ClCompile Include="Engine\Application\Window.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\Graphics\Renderer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="Engine\Application\SceneHandler.h" />
     <ClInclude Include="Engine\Application\Window.h" />
     <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\Graphics\Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
