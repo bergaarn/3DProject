@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include <Windows.h>
 
@@ -24,5 +25,5 @@ public:
 
 	inline const unsigned int getWidth() { return this->width; }
 	inline const unsigned int getHeight() { return this->height; }
-	inline HWND& getWindowHandler() { return this->windowHandler; }
+	inline const HWND& getWindowHandler() { return this->windowHandler; }
 };

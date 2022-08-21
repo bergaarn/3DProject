@@ -1,9 +1,10 @@
 #include "SceneHandler.h"
 
-SceneHandler::SceneHandler(Window& window): 
+SceneHandler::SceneHandler(Window& window, Renderer& renderer): 
 	currentScene(nullptr),
 	nextScene(nullptr),
-	window(window)
+	window(window),
+	renderer(renderer)
 {
 }
 

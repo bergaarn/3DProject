@@ -2,8 +2,7 @@
 #include "SceneHandler.h"
 
 Scene::Scene(SceneHandler& sceneHandler):
-	window(&sceneHandler.getWindow()),
-	sceneHandler(sceneHandler)
+	window(&sceneHandler.getWindow()), sceneHandler(sceneHandler)
 {
 }
 

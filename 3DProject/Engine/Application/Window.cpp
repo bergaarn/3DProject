@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Window.h"
 #include <iostream>
 
@@ -11,8 +13,7 @@ LRESULT CALLBACK windowProc(HWND handler, UINT message, WPARAM wParam, LPARAM lP
 
 		PostQuitMessage(0);
 		return 0;
-		
-		break;
+	
 	default:
 		break;
 	}

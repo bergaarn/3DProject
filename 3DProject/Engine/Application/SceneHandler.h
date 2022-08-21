@@ -1,6 +1,8 @@
 #pragma once
+
 #include "Scene.h"
 #include "Window.h"
+#include "../Graphics/Renderer.h"
 
 class SceneHandler
 {
@@ -9,9 +11,10 @@ private:
 	Scene* nextScene;
 	
 	Window& window;
+	Renderer& renderer;
 
 public:
-	SceneHandler(Window& window);
+	SceneHandler(Window& window, Renderer& renderer);
 	~SceneHandler();
 
 	void update();

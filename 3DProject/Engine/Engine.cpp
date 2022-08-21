@@ -1,10 +1,11 @@
 #include "Engine.h"
 
-Engine::Engine(): sceneHandler(this->window)
+Engine::Engine():
+	renderer(),	sceneHandler(this->window, this->renderer)	
 {
 	// Initiate All Resources
 	this->window.init(1280, 720, "Window");
-
+	this->renderer.init(this->window);
 
 	// Set Main Camera Scene
 }
@@ -17,6 +18,7 @@ void Engine::run()
 {
 	float frameTime = 0.0f;
 	float deltaTime = 0.0f;
+	float fps = 0.0f;
 	unsigned int frameCount = 0;
 	std::chrono::duration<float> timer;
 	
@@ -28,6 +30,7 @@ void Engine::run()
 		// Prepare scene swaps
 		this->sceneHandler.updateScene();
 		this->sceneHandler.update();
+		this->renderer.render(*this->sceneHandler.getCurrentScene());
 
 		// End deltaTime
 		auto end = std::chrono::steady_clock::now();
@@ -38,6 +41,12 @@ void Engine::run()
 		frameTime += timer.count();
 		frameCount++;
 		
+		// Update Title Window
+		this->window.setTitle(
+			"Frame Time: " + std::to_string(frameTime) + " | " +
+			"Frame Count: " + std::to_string(frameCount) + " | "
+			"FPS: " + std::to_string((int)(1.0f / fps))
+		);
 		/*
 		
 		// Update Title Window
@@ -48,12 +57,7 @@ void Engine::run()
 		);
 		*/
 
-
-		// Update Title Window
-		this->window.setTitle(
-			"Frame Time: " + std::to_string(frameTime) + " | " +
-			"Frame Count: " + std::to_string(frameCount)
-		);
+	
 	}
 	
 }
