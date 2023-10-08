@@ -10,7 +10,6 @@ LRESULT CALLBACK windowProc(HWND handler, UINT message, WPARAM wParam, LPARAM lP
 	switch (message)
 	{
 	case WM_DESTROY:
-
 		PostQuitMessage(0);
 		return 0;
 	
@@ -20,7 +19,6 @@ LRESULT CALLBACK windowProc(HWND handler, UINT message, WPARAM wParam, LPARAM lP
 
 	return DefWindowProc(handler, message, wParam, lParam);
 }
-
 
 Window::Window()
 	: width(0), height(0), title(""), windowHandler(NULL), windowClass{}, running(false)

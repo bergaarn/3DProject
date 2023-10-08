@@ -37,27 +37,19 @@ void Engine::run()
 		timer = end - start;
 
 		// Frame Statistics
-		//deltaTime = timer.count();
-		frameTime += timer.count();
+		deltaTime = timer.count();
+		frameTime += deltaTime;
 		frameCount++;
 		
 		// Update Title Window
 		this->window.setTitle(
 			"Frame Time: " + std::to_string(frameTime) + " | " +
-			"Frame Count: " + std::to_string(frameCount) + " | "
-			"FPS: " + std::to_string((int)(1.0f / fps))
-		);
-		/*
-		
-		// Update Title Window
-		this->window.setTitle(
 			"Delta Time: " + std::to_string(deltaTime) + " | " +
-			"Frame Time: " + std::to_string(frameTime) + " | " +
-			"Frame Count: " + std::to_string(frameCount)
+			"Frame Count: " + std::to_string(frameCount) + " | "
+			"Frames Per Second: " + std::to_string((int)(frameCount/frameTime))
 		);
-		*/
 
-	
+		this->renderer.updateMatrices(frameTime);
 	}
 	
 }
